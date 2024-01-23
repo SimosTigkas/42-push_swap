@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:15:24 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/23 15:24:01 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:26:27 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static void	rev_rotate(t_stack **stack)
 	if (!(*stack) || ft_stack_size(*stack) <= 1)
 		return ;
 	seclast = NULL;
-	last = *stack; //head
-	while (last->next) //null
+	last = *stack;
+	while (last->next)
 	{
-		seclast = last; // n3
-		last = last->next; // n4
+		seclast = last;
+		last = last->next;
 	}
-	seclast->next = NULL; //n3 -> next = Null
-	last->next = *stack; //n4 is pointing to the head
-	*stack = last; //n4 gets the address of the head
+	seclast->next = NULL;
+	last->next = *stack;
+	*stack = last;
 }
 
 void	rra(t_stack **stack_a)
