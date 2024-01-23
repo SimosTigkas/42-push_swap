@@ -4,7 +4,8 @@ FUNC= \
 	push.c \
 	rev_rotate.c \
 	rotate.c \
-	swap.c
+	swap.c \
+	stack_analysis.c
 
 INC = includes
 
