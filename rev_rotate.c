@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:15:24 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/23 15:26:27 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:13:05 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,18 @@ static void	rev_rotate(t_stack **stack)
 void	rra(t_stack **stack_a)
 {
 	rev_rotate(stack_a);
+	write(1, &"rra\n", 4);
 }
 
 void	rrb(t_stack **stack_b)
 {
 	rev_rotate(stack_b);
+	write(1, &"rrb\n", 4);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rev_rotate(stack_a);
 	rev_rotate(stack_b);
+	write(1, &"rrr\n", 4);
 }

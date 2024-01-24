@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:52:21 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/23 10:59:50 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/24 13:47:34 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,60 @@
 int	ft_stack_size(t_stack *stack)
 {
 	int		size;
-	t_stack	*ptr;
 
 	size = 0;
 	if (stack == NULL)
 		return (0);
-	ptr = stack;
-	while (ptr != NULL)
+	while (stack != NULL)
 	{
 		size++;
-		ptr = ptr->next;
+		stack = stack->next;
 	}
 	return (size);
+}
+
+void	ft_stackadd_back(t_stack **stack, t_stack *new)
+{
+	t_stack	*node;
+
+	if (!stack || !new)
+		return ;
+	if (!(*stack))
+	{
+		*stack = new;
+		return ;
+	}
+	node = *stack;
+	while (node->next)
+		node = node->next;
+	node->next = new;
+}
+
+t_stack	*ft_stacknew(int *data)
+{
+	t_stack	*node;
+
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->data = data;
+	node->next = NULL;
+	return (node);
+}
+
+void	ft_stackclear(t_stack **stack)
+{
+	t_stack	*node;
+	t_stack	*next;
+
+	if (!(stack))
+		return ;
+	node = *stack;
+	while (node)
+	{
+		next = (*stack)->next;
+		free(node);
+		node = next;
+	}
+	*stack = NULL;
 }

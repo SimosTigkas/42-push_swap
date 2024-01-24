@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:14:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/23 10:42:24 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/24 09:47:47 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 	*stack_b = temp->next;
 	temp->next = *stack_a;
 	*stack_a = temp;
+	write(1, &"pa\n", 3);
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
@@ -34,4 +35,5 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 	*stack_a = temp->next;
 	temp->next = *stack_b;
 	*stack_b = temp;
+	write(1, &"pb\n", 3);
 }
