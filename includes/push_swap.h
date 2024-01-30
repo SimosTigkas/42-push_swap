@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:42:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/26 17:13:55 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/30 15:48:15 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	**split_copy_av(int ac, char **av);
 int		syntax_check(char **str_of_str);
 char	**copy_av(int ac, char **av);
 int		is_duplicated(t_stack **stack_a, int nbr);
-
+void	index_the_stack(t_stack **stack);
 
 
 #endif

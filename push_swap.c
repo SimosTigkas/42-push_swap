@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/26 16:40:38 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/30 15:57:13 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int	main(int ac, char *av[])
 	t_stack	*headstack_a;
 	t_stack	*headstack_b;
 
+	headstack_a = (t_stack *)malloc(sizeof(t_stack));
+	headstack_b = (t_stack *)malloc(sizeof(t_stack));
 	*headstack_a = NULL;
 	*headstack_b = NULL;
 	if (!ac)

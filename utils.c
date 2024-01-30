@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/26 17:32:56 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:01:45 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ void	get_the_stack(char **strs, t_stack **stack_a, t_stack **stack_b, int ac)
 	int	iscreated;
 
 	iscreated = create_stack(strs, stack_a);
+	if (iscreated)
+	{
+		write(2, "Error\n", 6);
+		free(strs);
+		ft_stackclear(stack_a);
+		exit(0);
+	}
 }
 
 int	create_stack(char **strs, t_stack **stack_a)
@@ -36,6 +43,7 @@ int	create_stack(char **strs, t_stack **stack_a)
 	int		i;
 
 	node = NULL;
+	*stack_a = NULL;
 	nbr = 0;
 	i = 0;
 	while (strs[i])
@@ -46,9 +54,10 @@ int	create_stack(char **strs, t_stack **stack_a)
 		node = ft_stacknew(nbr);
 		if (node == NULL)
 			return (1);
-		ft_stackadd_back(node);
+		ft_stackadd_back(stack_a, node);
 		i++;
 	}
+	index_the_stack(stack_a);
 	return (0);
 }
 

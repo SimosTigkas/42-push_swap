@@ -6,7 +6,9 @@ FUNC= \
 	rotate.c \
 	swap.c \
 	stack_analysis.c \
-	stack_init.c 
+	utils.c \
+	index.c \
+	push_swap.c
 
 INC = includes
 
