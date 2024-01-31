@@ -1,14 +1,16 @@
 NAME= push_swap.a
 
 FUNC= \
+	index.c \
+	push_swap.c \
 	push.c \
 	rev_rotate.c \
 	rotate.c \
-	swap.c \
+	small_sort.c \
 	stack_analysis.c \
+	swap.c \
 	utils.c \
-	index.c \
-	push_swap.c
+	validity_of_args.c
 
 INC = includes
 

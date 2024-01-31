@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:42:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/30 15:48:15 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:41:12 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,19 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
-t_stack	*stack_init(int len, char **str_of_str);
 void	ft_stackclear(t_stack **stack);
 t_stack	*ft_stacknew(int *data);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
-int		ft_strcmp(char *s1, char *s2);
-char	**split_copy_av(int ac, char **av);
-int		syntax_check(char **str_of_str);
-char	**copy_av(int ac, char **av);
-int		is_duplicated(t_stack **stack_a, int nbr);
+void	validity_of_args(int ac, char *av[]);
+void	get_the_stack(char **head_a, int ac, char *av[]);
+void	sort_the_stack(t_stack **head_a, t_stack **head_b);
+int		is_duplicated(char **args, int nbr, int i);
 void	index_the_stack(t_stack **stack);
-
+void	ft_error(char *str);
+void	ft_free(char **args);
+void	free_stack(t_stack **stack);
+void	small_sort(t_stack **head_a, t_stack **head_b);
+t_stack	*getthe_next_min(t_stack **stack);
+int		is_min(t_stack *stack, int nbr);
 
 #endif

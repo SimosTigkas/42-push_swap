@@ -6,13 +6,29 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:21:20 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/30 15:44:56 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:43:52 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*getthe_next_min(t_stack **stack)
+int	is_min(t_stack *stack, int nbr)
+{
+	t_stack	*head;
+	int		min;
+
+	head = stack;
+	min = head->index;
+	while (head->next)
+	{
+		head = head->next;
+		if ((head->index < min) && (head->index != nbr))
+			min = head->index;
+	}
+	return (min);
+}
+
+t_stack	*getthe_next_min(t_stack **stack)
 {
 	t_stack	*head;
 	t_stack	*min;

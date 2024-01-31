@@ -6,73 +6,43 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/30 16:01:45 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:33:24 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_error(char *str)
+{
+	ft_putendl_fd(str, 1);
+	exit(0);
+}
+
+void	ft_free(char **args)
 {
 	int	i;
 
 	i = 0;
-	while (s1[i] != '\0' && (s1[i] == s2[i]))
+	while (args[i])
 		i++;
-	return (s1[i] - s2[i]);
-}
-
-void	get_the_stack(char **strs, t_stack **stack_a, t_stack **stack_b, int ac)
-{
-	int	iscreated;
-
-	iscreated = create_stack(strs, stack_a);
-	if (iscreated)
+	while (i)
 	{
-		write(2, "Error\n", 6);
-		free(strs);
-		ft_stackclear(stack_a);
-		exit(0);
+		free(args[i]);
+		i--;
 	}
 }
 
-int	create_stack(char **strs, t_stack **stack_a)
+void	free_stack(t_stack **stack)
 {
-	t_stack	*node;
-	int		nbr;
-	int		i;
+	t_stack	*head;
+	t_stack	*temp;
 
-	node = NULL;
-	*stack_a = NULL;
-	nbr = 0;
-	i = 0;
-	while (strs[i])
+	head = *stack;
+	while (head)
 	{
-		nbr = ft_atoi(&strs[i][0]);
-		if (is_duplicated(stack_a, nbr))
-			return (1);
-		node = ft_stacknew(nbr);
-		if (node == NULL)
-			return (1);
-		ft_stackadd_back(stack_a, node);
-		i++;
+		temp = head;
+		head = head->next;
+		free(temp);
 	}
-	index_the_stack(stack_a);
-	return (0);
-}
-
-int	is_duplicated(t_stack **stack_a, int nbr)
-{
-	t_stack	*current;
-
-	current = (*stack_a);
-	if (!current)
-		return (0);
-	while (current)
-	{
-		if (current->data == nbr)
-			return (1);
-		current = current->next;
-	}
-	return (0);
+	free(stack);
 }

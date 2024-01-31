@@ -6,98 +6,85 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/30 15:57:13 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/01/31 13:14:39 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**copy_av(int ac, char **av)
+void	get_the_stack(char **head_a, int ac, char *av[])
 {
+	t_stack	*node;
+	char	**args;
 	int		i;
-	int		j;
-	char	*str_str;
+	int		nbr;
 
 	i = 0;
-	j = 1;
-	strs = malloc(ac * sizeof(int));
-	if (strs == 0)
-		return (0);
-	while (i < (ac - 1))
-	{
-		strs[i] = strs[j];
-		i++;
-		j++;
-	}
-	return (strs);
-}
-
-int	syntax_check(char **strs)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (strs[i])
-	{
-		if (strs[i][j] == '-')
-			j++;
-		while (strs[i][j])
-		{
-			if (strs[i][j] >= '0' || strs[i][j] <= '9')
-				j++;
-			else
-				return (-1);
-		}
-		i++;
-		j = 0;
-	}
-	return (0);
-}
-
-char	**split_copy_av(int ac, char **av)
-{
-	char	**strs;
-
 	if (ac == 2)
-	{
-		strs = ft_split(str, ' ');
-		if (strs[0] == 0)
-		{
-			free(strs);
-			return (0);
-		}
-		if (strs == 0 || syntax_check(strs) < 0)
-			return (0);
-	}
+		args = ft_split(av[1], ' ');
 	else
 	{
-		strs = copy_av(av, ac);
-		if (strs == 0 || syntax_check(strs) < 0)
-			return (0);
+		i = 1;
+		args = av;
 	}
-	return (strs);
+	while (args[i])
+	{
+		nbr = ft_atoi(args[i]);
+		node = ft_stacknew(nbr);
+		ft_stackadd_back(node);
+		i++;
+	}
+	index_the_stack(head_a);
+	if (ac == 2)
+		ft_free(args);
+}
+
+void	sort_the_stack(t_stack **head_a, t_stack **head_b)
+{
+	if (ft_stack_size(*head_a) <= 5)
+		small_sort(head_a, head_b);
+	else
+		radix_sort(head_a, head_b);
+}
+
+int	is_sorted(t_stack **head_a)
+{
+	t_stack	*temp;
+
+	temp = *head_a;
+	while (temp->next)
+	{
+		if (temp->data > temp->next->data)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
 }
 
 int	main(int ac, char *av[])
 {
-	char	**strs;
-	t_stack	*headstack_a;
-	t_stack	*headstack_b;
+	t_stack	**head_a;
+	t_stack	**head_b;
 
-	headstack_a = (t_stack *)malloc(sizeof(t_stack));
-	headstack_b = (t_stack *)malloc(sizeof(t_stack));
-	*headstack_a = NULL;
-	*headstack_b = NULL;
-	if (!ac)
+	head_a = (t_stack **)malloc(sizeof(t_stack));
+	head_b = (t_stack **)malloc(sizeof(t_stack));
+	*head_a = NULL;
+	*head_b = NULL;
+	if (ac == 1 || (ac == 2 && av[1][0] == 0))
 	{
 		write(2, "Error\n", 6);
+		return (-1);
+	}
+	validity_of_args(ac, av);
+	get_the_stack(head_a, ac, av);
+	if (is_sorted(head_a))
+	{
+		free_stack(head_a);
+		free_stack(head_b);
 		return (0);
 	}
-	if (ac == 1 || (ac == 2 && av[1][0] == 0))
-		return (0);
-	strs = split_copy_av(ac, av);
-	get_the_stack(strs, headstack_a, headstack_b, ac);
+	sort_the_stack(head_a, head_b);
+	free_stack(head_a);
+	free_stack(head_b);
 	return (0);
 }
