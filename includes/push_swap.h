@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:42:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/31 13:41:12 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:49:57 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,10 @@ void	free_stack(t_stack **stack);
 void	small_sort(t_stack **head_a, t_stack **head_b);
 t_stack	*getthe_next_min(t_stack **stack);
 int		is_min(t_stack *stack, int nbr);
+void	sort_3(t_stack *head_a);
+void	sort_4(t_stack *head_a);
+int		get_distance(t_stack **head_a, int index);
+
+
 
 #endif
