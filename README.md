@@ -31,12 +31,12 @@ This project involves sorting a stack of integers in ascending order using speci
 **`rrr`**: rra and rrb simultaneously.
 
 ## Usage:
-**Program Name: push_swap**
+***Program Name: push_swap***
 
 ***Arguments***: A list of integers representing stack a, with the first argument at the top of the stack.
 ***Output***: Display the smallest list of instructions to sort stack a, each instruction separated by a newline.
 
-**Project Requirements**:
+***Project Requirements***:
 Makefile: Compile source files without relinking.
 
 Source files: *.h and *.c files.
