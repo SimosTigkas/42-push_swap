@@ -4,21 +4,21 @@
 This project involves sorting a stack of integers in ascending order using specific operations on two stacks named a and b.
 
 ## Rules:
-The stacks:
+### The stacks:
    Stack a: Contains a random amount of negative and/or positive numbers without duplicates.
    Stack b: Initially empty.
-Operations:
-**sa**: Swap the first 2 elements of stack a.
-**sb**: Swap the first 2 elements of stack b.
-**ss**: sa and sb simultaneously.
-**pa**: Push the top element of stack b onto stack a.
-**pb**: Push the top element of stack a onto stack b.
-**ra**: Rotate up all elements of stack a by 1.
-**rb**: Rotate up all elements of stack b by 1.
-**rr**: ra and rb simultaneously.
-**rra**: Reverse rotate down all elements of stack a by 1.
-**rrb**: Reverse rotate down all elements of stack b by 1.
-**rrr**: rra and rrb simultaneously.
+### Operations:
+**sa**: Swap the first 2 elements of stack a. \n
+**sb**: Swap the first 2 elements of stack b. \n
+**ss**: sa and sb simultaneously. \n
+**pa**: Push the top element of stack b onto stack a. \n
+**pb**: Push the top element of stack a onto stack b. \n
+**ra**: Rotate up all elements of stack a by 1. \n
+**rb**: Rotate up all elements of stack b by 1. \n
+**rr**: ra and rb simultaneously. \n
+**rra**: Reverse rotate down all elements of stack a by 1. \n
+**rrb**: Reverse rotate down all elements of stack b by 1. \n
+**rrr**: rra and rrb simultaneously. \n
 
 ## Usage:
 **Program Name: push_swap**
