@@ -8,27 +8,27 @@ This project involves sorting a stack of integers in ascending order using speci
    Stack a: Contains a random amount of negative and/or positive numbers without duplicates.
    Stack b: Initially empty.
 ### Operations:
-**sa**: Swap the first 2 elements of stack a.
+`**sa**`: Swap the first 2 elements of stack a.
 
-**sb**: Swap the first 2 elements of stack b.
+`**sb**`: Swap the first 2 elements of stack b.
 
-**ss**: sa and sb simultaneously.
+`**ss**`: sa and sb simultaneously.
 
-**pa**: Push the top element of stack b onto stack a.
+`**pa**`: Push the top element of stack b onto stack a.
 
-**pb**: Push the top element of stack a onto stack b.
+`**pb**`: Push the top element of stack a onto stack b.
 
-**ra**: Rotate up all elements of stack a by 1.
+`**ra**`: Rotate up all elements of stack a by 1.
 
-**rb**: Rotate up all elements of stack b by 1.
+`**rb**`: Rotate up all elements of stack b by 1.
 
-**rr**: ra and rb simultaneously.
+`**rr**`: ra and rb simultaneously.
 
-**rra**: Reverse rotate down all elements of stack a by 1.
+`**rra**`: Reverse rotate down all elements of stack a by 1.
 
-**rrb**: Reverse rotate down all elements of stack b by 1.
+`**rrb**`: Reverse rotate down all elements of stack b by 1.
 
-**rrr**: rra and rrb simultaneously.
+`**rrr**`: rra and rrb simultaneously.
 
 ## Usage:
 **Program Name: push_swap**
