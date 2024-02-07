@@ -10,7 +10,8 @@ FUNC= \
 	stack_analysis.c \
 	swap.c \
 	utils.c \
-	validity_of_args.c
+	validity_of_args.c \
+	radix_sort.c
 
 INC = includes
 

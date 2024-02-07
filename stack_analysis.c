@@ -6,11 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:52:21 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/26 17:20:06 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/07 13:55:34 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "./includes/push_swap.h"
 
 int	ft_stack_size(t_stack *stack)
 {
@@ -44,14 +44,14 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	node->next = new;
 }
 
-t_stack	*ft_stacknew(int data)
+t_stack	*ft_stacknew(int v)
 {
 	t_stack	*node;
 
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
-	node->data = data;
+	node->data = v;
 	node->next = NULL;
 	return (node);
 }

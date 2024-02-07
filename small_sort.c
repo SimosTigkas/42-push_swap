@@ -6,11 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:52:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/01 15:24:08 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/07 13:55:22 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./includes/push_swap.h"
 
 void	sort_5(t_stack **head_a, t_stack **head_b)
 {

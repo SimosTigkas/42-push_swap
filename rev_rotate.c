@@ -6,11 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:15:24 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/24 14:13:05 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/07 13:55:55 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "./includes/push_swap.h"
 
 static void	rev_rotate(t_stack **stack)
 {

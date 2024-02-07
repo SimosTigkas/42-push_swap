@@ -6,11 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:14:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/24 09:47:47 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/07 13:56:04 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/push_swap.h"
+#include "./includes/push_swap.h"
 
 void	pa(t_stack **stack_a, t_stack **stack_b)
 {

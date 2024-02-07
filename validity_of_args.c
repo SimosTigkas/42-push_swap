@@ -6,15 +6,14 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 09:46:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/31 10:58:16 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/07 13:55:31 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "./includes/push_swap.h"
 
 int	is_duplicated(char **args, int nbr, int i)
 {
-	//i++;
 	while (args[i])
 	{
 		if (args[i] == nbr)
