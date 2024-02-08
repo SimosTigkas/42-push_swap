@@ -25,9 +25,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar crs $(NAME) $(OBJ)
-
-$(LIBFT):
-	cd libfta && $(MAKE) && $(MAKE) bonus
+	cd libfta && $(MAKE) all && $(MAKE) bonus
 
 $(OBJ): %.o: %.c
 	$(CC) $(CFLAGS) -c $? -o $@
