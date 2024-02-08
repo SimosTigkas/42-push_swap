@@ -1,4 +1,4 @@
-NAME= push_swap.a
+NAME=push_swap.a
 
 FUNC= \
 	index.c \
@@ -23,6 +23,9 @@ CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	ar crs $(NAME) $(OBJ)
+
 $(LIBFT):
 	cd libfta && $(MAKE) && $(MAKE) bonus
 
@@ -39,4 +42,4 @@ fclean:	clean
 
 re: fclean all
 
-.PHONY all clean fclean re
+.PHONY: all clean fclean re

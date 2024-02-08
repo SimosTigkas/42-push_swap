@@ -6,13 +6,13 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/07 14:11:37 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/08 14:48:30 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "includes/push_swap.h"
 
-void	get_the_stack(t_stack **head_a, int ac, char *av[])
+static void	get_the_stack(t_stack **head_a, int ac, char *av[])
 {
 	t_stack	*node;
 	char	**args;
@@ -39,7 +39,7 @@ void	get_the_stack(t_stack **head_a, int ac, char *av[])
 		ft_free(args);
 }
 
-void	sort_the_stack(t_stack **head_a, t_stack **head_b)
+static void	sort_the_stack(t_stack **head_a, t_stack **head_b)
 {
 	if (ft_stack_size(*head_a) <= 5)
 		small_sort(head_a, head_b);

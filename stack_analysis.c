@@ -6,11 +6,23 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:52:21 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/07 13:55:34 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/08 16:28:55 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "includes/push_swap.h"
+
+t_stack	*ft_stacklast(t_stack *stack)
+{
+	t_stack	*node;
+
+	if (stack == NULL)
+		return (NULL);
+	node = stack;
+	while (node->next != NULL)
+		node = node->next;
+	return (node);
+}
 
 int	ft_stack_size(t_stack *stack)
 {

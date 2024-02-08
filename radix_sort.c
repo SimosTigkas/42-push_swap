@@ -6,11 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:32:17 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/07 13:55:18 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/08 13:48:45 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "includes/push_swap.h"
 
 void	check_and_push(t_stack **h_a, t_stack **h_b, int m_b, int m_bits)
 {

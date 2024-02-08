@@ -6,11 +6,11 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:21:20 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/07 13:55:29 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/08 14:20:53 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/push_swap.h"
+#include "includes/push_swap.h"
 
 int	get_distance(t_stack **head_a, int index)
 {
@@ -29,12 +29,12 @@ int	get_distance(t_stack **head_a, int index)
 	return (distance);
 }
 
-int	is_min(t_stack *stack, int nbr)
+int	is_min(t_stack **stack, int nbr)
 {
 	t_stack	*head;
 	int		min;
 
-	head = stack;
+	head = *stack;
 	min = head->index;
 	while (head->next)
 	{
@@ -66,6 +66,7 @@ t_stack	*getthe_next_min(t_stack **stack)
 			head = head->next;
 		}
 	}
+	return (min);
 }
 
 void	index_the_stack(t_stack **stack)
