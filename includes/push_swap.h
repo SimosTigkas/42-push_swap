@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:42:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/09 13:32:32 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:56:55 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_stackclear(t_stack **stack);
 t_stack	*ft_stacknew(int v);
 t_stack	*ft_stacklast(t_stack *stack);
 void	ft_stackadd_back(t_stack **stack, t_stack *new);
-void	validity_of_args(int ac, char *av[]);
+int		validity_of_args(char **args, int counter);
 void	sort_the_stack(t_stack **head_a, t_stack **head_b);
 t_stack	*init_list(int ac, char *av[]);
 t_stack	*create_stack(t_stack **stack, char **args, int counter);
@@ -61,5 +61,6 @@ void	radix_sort(t_stack **head_a, t_stack **head_b);
 void	div_by_bits(t_stack **h_a, t_stack **h_b, int m_bits, int m_index);
 void	check_and_push(t_stack **h_a, t_stack **h_b, int m_b, int m_bits);
 int		num_count(char *av1);
+char	**args_array(char **av, int counter);
 
 #endif

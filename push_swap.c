@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/09 13:48:55 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:58:14 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int	main(int ac, char *av[])
 	t_stack	**head_a;
 	t_stack	**head_b;
 
-	*head_a = NULL;
-	*head_b = NULL;
+	head_a = NULL;
+	head_b = NULL;
 	if (ac < 2 || (ac == 2 && av[1][0] == 0))
 	{
 		write(2, "Error\n", 6);

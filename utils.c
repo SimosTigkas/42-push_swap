@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/09 13:42:28 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/09 14:02:07 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	num_count(char *av1)
 	while (*av1)
 	{
 		if (*av1 == c)
-			av++;
+			av1++;
 		else
 		{
 			while ((*av1 != c) && (av1))
@@ -68,12 +68,12 @@ char	**args_array(char **av, int counter)
 		args[i] = ft_strdup(av[1 + i]);
 		if (!args[i])
 		{
-			ft_free(args[i]);
+			ft_free(args);
 			return (NULL);
 		}
 		i++;
 	}
-	args[counter] = '\0';
+	args[counter] = 0;
 	return (args);
 }
 
