@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/08 13:49:29 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:42:28 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,75 @@ void	ft_free(char **args)
 		free(args[i]);
 		i--;
 	}
+	free(args);
 }
 
-void	free_stack(t_stack **stack)
+int	num_count(char *av1)
 {
-	t_stack	*head;
-	t_stack	*temp;
+	int		nums;
+	char	c;
 
-	head = *stack;
-	while (head)
+	nums = 0;
+	c = ' ';
+	while (*av1)
 	{
-		temp = head;
-		head = head->next;
-		free(temp);
+		if (*av1 == c)
+			av++;
+		else
+		{
+			while ((*av1 != c) && (av1))
+				av1++;
+			nums++;
+		}
 	}
-	free(stack);
+	return (nums);
+}
+
+char	**args_array(char **av, int counter)
+{
+	char	**args;
+	int		i;
+
+	i = 0;
+	args = (char **)malloc((counter + 1) * sizeof(char **));
+	if (!args)
+		return (NULL);
+	while (i < counter)
+	{
+		args[i] = ft_strdup(av[1 + i]);
+		if (!args[i])
+		{
+			ft_free(args[i]);
+			return (NULL);
+		}
+		i++;
+	}
+	args[counter] = '\0';
+	return (args);
+}
+
+t_stack	*create_stack(t_stack **stack, char **args, int counter)
+{
+	t_stack	*new;
+	long	num;
+	int		i;
+
+	i = 0;
+	stack = NULL;
+	new = NULL;
+	num = ft_atoi(args[i]);
+	new = ft_stacknew(num);
+	stack = &new;
+	if (!new)
+		return (NULL);
+	i++;
+	while (i <= counter)
+	{
+		num = ft_atoi(args[i]);
+		if (!new)
+			return (NULL);
+		ft_stackadd_back(stack, ft_stacknew(num));
+		i++;
+	}
+	return (new);
 }

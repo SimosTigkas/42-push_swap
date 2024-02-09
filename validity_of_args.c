@@ -6,48 +6,106 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 09:46:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/08 17:29:16 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:29:35 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int	is_duplicated(int nbr, char **args, int i)
-{
-	while (args[i])
-	{
-		if (ft_atoi(args[i]) == nbr)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	validity_of_args(int ac, char *av[])
+int	is_int(char **args, int counter)
 {
 	int		i;
-	long	temp;
-	char	**args;
+	int		is_valid;
+	char	**nums;
+	int		arg_len;
 
 	i = 0;
-	if (ac == 2)
-		args = ft_split(av[1], ' ');
-	else
+	is_valid = 1;
+	nums = (char **)malloc((counter + 1) * sizeof(char **));
+	if (!nums)
+		is_valid = 0;
+	while ((i < counter) && (is_valid))
 	{
-		i++;
-		args = av;
+		nums[i] = ft_itoa(ft_atoi(args[i]));
+		arg_len = ft_strlen(args[i]);
+		if (ft_strncmp(args[i], nums[i], arg_len) != 0)
+		{
+			ft_free(nums);
+			is_valid = 0;
+		}
+		else
+			i++;
 	}
-	while (args[i])
+	ft_free(nums);
+	return (is_valid);
+}
+
+int	is_digit(char **args, int counter)
+{
+	int	is_valid;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	is_valid = 1;
+	while (i < counter)
 	{
-		temp = ft_atoi(args[i]);
-		if (ft_isalpha(temp))
-			ft_error("Error");
-		if (is_duplicated(temp, args, i))
-			ft_error("Error");
-		if (temp < -2147483648 || temp > 2147483647)
-			ft_error("Error");
+		while (args[i][j])
+		{
+			is_valid = ft_isdigit(args[i][j]);
+			if ((!is_valid) && args[i][j] != '-' \
+				&& (!ft_isdigit(args[i][j])))
+				return (0);
+			if (j > 11)
+				return (0);
+			j++;
+		}
 		i++;
 	}
-	if (ac == 2)
-		ft_free(args);
+	return (is_valid);
+}
+
+int	is_duplicated(char **args, int counter)
+{
+	int	is_valid;
+	int	arg_len;
+	int	i;
+	int	j;
+
+	is_valid = 1;
+	i = 0;
+	while ((i < counter - 1) && (is_valid))
+	{
+		j = i + 1;
+		while ((j < counter) && (is_valid != 0))
+		{
+			if (ft_strlen(args[i]) == ft_strlen(args[j]))
+			{
+				arg_len = ft_strlen(args[i]);
+				if (ft_strncmp(args[i], args[j]) == 0)
+					is_valid = 0;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (is_valid);
+}
+
+int	validity_of_args(char **args, int counter)
+{
+	int		is_valid;
+
+	is_valid = 1;
+	is_valid = is_digit(args, counter);
+	if (!is_valid)
+		return (0);
+	is_valid = is_duplicated(args, counter);
+	if (!is_valid)
+		return (0);
+	is_valid = is_int(args, counter);
+	if (!is_valid)
+		return (0);
+	return (is_valid);
 }

@@ -6,40 +6,57 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/08 14:48:30 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:48:55 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-static void	get_the_stack(t_stack **head_a, int ac, char *av[])
+void	free_stack(t_stack **stack)
+{
+	t_stack	*head;
+	t_stack	*temp;
+
+	head = *stack;
+	while (head)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+	free(stack);
+}
+
+t_stack	*init_list(int ac, char *av[])
 {
 	t_stack	*node;
 	char	**args;
-	int		i;
-	int		nbr;
+	int		counter;
+	int		is_valid;
 
-	i = 0;
+	counter = ac - 1;
 	if (ac == 2)
+	{
 		args = ft_split(av[1], ' ');
+		counter = num_count(av[1]);
+	}
 	else
+		args = args_array(av, counter);
+	if (!args)
+		return (NULL);
+	is_valid = validity_of_args(args, counter);
+	if (is_valid != 1)
 	{
-		i = 1;
-		args = av;
-	}
-	while (args[i])
-	{
-		nbr = ft_atoi(args[i]);
-		node = ft_stacknew(nbr);
-		ft_stackadd_back(head_a, node);
-		i++;
-	}
-	index_the_stack(head_a);
-	if (ac == 2)
+		ft_error("Error");
 		ft_free(args);
+		return (NULL);
+	}
+	node = create_stack(&node, args, counter - 1);
+	ft_free(args);
+	return (node);
 }
 
-static void	sort_the_stack(t_stack **head_a, t_stack **head_b)
+void	sort_the_stack(t_stack **head_a, t_stack **head_b)
 {
 	if (ft_stack_size(*head_a) <= 5)
 		small_sort(head_a, head_b);
@@ -66,23 +83,23 @@ int	main(int ac, char *av[])
 	t_stack	**head_a;
 	t_stack	**head_b;
 
-	head_a = (t_stack **)malloc(sizeof(t_stack));
-	head_b = (t_stack **)malloc(sizeof(t_stack));
 	*head_a = NULL;
 	*head_b = NULL;
-	if (ac == 1 || (ac == 2 && av[1][0] == 0))
+	if (ac < 2 || (ac == 2 && av[1][0] == 0))
 	{
 		write(2, "Error\n", 6);
 		return (-1);
 	}
-	validity_of_args(ac, av);
-	get_the_stack(head_a, ac, av);
+	*head_a = init_list(ac, av);
+	if (!(*head_a))
+		return (0);
 	if (is_sorted(head_a))
 	{
 		free_stack(head_a);
 		free_stack(head_b);
 		return (0);
 	}
+	index_the_stack(head_a);
 	sort_the_stack(head_a, head_b);
 	free_stack(head_a);
 	free_stack(head_b);

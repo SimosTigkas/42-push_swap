@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:52:21 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/08 16:28:55 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/09 11:06:10 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stack	*ft_stacklast(t_stack *stack)
 	if (stack == NULL)
 		return (NULL);
 	node = stack;
-	while (node->next != NULL)
+	while (node->next)
 		node = node->next;
 	return (node);
 }
@@ -31,7 +31,7 @@ int	ft_stack_size(t_stack *stack)
 	size = 0;
 	if (stack == NULL)
 		return (0);
-	while (stack != NULL)
+	while (stack)
 	{
 		size++;
 		stack = stack->next;
@@ -60,11 +60,12 @@ t_stack	*ft_stacknew(int v)
 {
 	t_stack	*node;
 
-	node = malloc(sizeof(t_stack));
+	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
 	node->data = v;
 	node->next = NULL;
+	node->index = -1;
 	return (node);
 }
 
