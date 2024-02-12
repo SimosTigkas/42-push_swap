@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:52:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/08 17:18:37 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/12 12:32:26 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,6 @@ void	small_sort(t_stack **head_a, t_stack **head_b)
 {
 	int	size;
 
-	if (is_sorted(head_a) || ft_stack_size(*head_a) == 0
-		|| ft_stack_size(*head_a) == 1)
-		return ;
 	size = ft_stack_size(*head_a);
 	if (size == 2)
 		sa(head_a);
@@ -106,4 +103,6 @@ void	small_sort(t_stack **head_a, t_stack **head_b)
 		sort_4(head_a, head_b);
 	else if (size == 5)
 		sort_5(head_a, head_b);
+	else
+		return ;
 }

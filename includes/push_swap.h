@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:42:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/09 13:56:55 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/12 09:03:07 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		is_duplicated(char **args, int counter);
 void	index_the_stack(t_stack **stack);
 void	ft_error(char *str);
 void	ft_free(char **args);
-void	free_stack(t_stack **stack);
+void	free_stack(t_stack *stack);
 void	small_sort(t_stack **head_a, t_stack **head_b);
 int		is_sorted(t_stack **head_a);
 int		is_digit(char **args, int counter);

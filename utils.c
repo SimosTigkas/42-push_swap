@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/09 14:02:07 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:23:42 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@ void	ft_free(char **args)
 	i = 0;
 	while (args[i])
 		i++;
-	while (i)
-	{
-		free(args[i]);
-		i--;
-	}
+	while (i > 0)
+		free(args[--i]);
 	free(args);
 }
 
@@ -40,13 +37,13 @@ int	num_count(char *av1)
 
 	nums = 0;
 	c = ' ';
-	while (*av1)
+	while (av1)
 	{
-		if (*av1 == c)
+		if (av1 == c)
 			av1++;
 		else
 		{
-			while ((*av1 != c) && (av1))
+			while ((av1 != c) && (av1))
 				av1++;
 			nums++;
 		}
@@ -88,7 +85,7 @@ t_stack	*create_stack(t_stack **stack, char **args, int counter)
 	new = NULL;
 	num = ft_atoi(args[i]);
 	new = ft_stacknew(num);
-	stack = &new;
+	stack = new;
 	if (!new)
 		return (NULL);
 	i++;

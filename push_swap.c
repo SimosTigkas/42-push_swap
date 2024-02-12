@@ -6,28 +6,26 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/09 13:58:14 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:22:52 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-void	free_stack(t_stack **stack)
+void	free_stack(t_stack *stack)
 {
-	t_stack	*head;
 	t_stack	*temp;
 
-	head = *stack;
-	while (head)
+	temp = NULL;
+	while (stack)
 	{
-		temp = head;
-		head = head->next;
+		temp = stack;
+		stack = stack->next;
 		free(temp);
 	}
-	free(stack);
 }
 
-t_stack	*init_list(int ac, char *av[])
+t_stack	*init_list(int ac, char **av)
 {
 	t_stack	*node;
 	char	**args;
@@ -58,17 +56,22 @@ t_stack	*init_list(int ac, char *av[])
 
 void	sort_the_stack(t_stack **head_a, t_stack **head_b)
 {
-	if (ft_stack_size(*head_a) <= 5)
+	int	counter;
+
+	counter = ft_stack_size(*head_a);
+	if ((counter >= 2) && (counter <= 5))
 		small_sort(head_a, head_b);
-	else
+	else if (counter > 5)
 		radix_sort(head_a, head_b);
+	else
+		return ;
 }
 
 int	is_sorted(t_stack **head_a)
 {
 	t_stack	*temp;
 
-	temp = *head_a;
+	temp = head_a;
 	while (temp->next)
 	{
 		if (temp->data > temp->next->data)
@@ -78,29 +81,29 @@ int	is_sorted(t_stack **head_a)
 	return (1);
 }
 
-int	main(int ac, char *av[])
+int	main(int ac, char **av)
 {
-	t_stack	**head_a;
-	t_stack	**head_b;
+	t_stack	*head_a;
+	t_stack	*head_b;
 
 	head_a = NULL;
 	head_b = NULL;
-	if (ac < 2 || (ac == 2 && av[1][0] == 0))
+	if (ac < 2 || (ac == 2 && av[1][0] == '\0'))
 	{
 		write(2, "Error\n", 6);
-		return (-1);
-	}
-	*head_a = init_list(ac, av);
-	if (!(*head_a))
 		return (0);
-	if (is_sorted(head_a))
+	}
+	head_a = init_list(ac, av);
+	if (!(head_a))
+		return (0);
+	if (is_sorted(&head_a))
 	{
 		free_stack(head_a);
 		free_stack(head_b);
 		return (0);
 	}
-	index_the_stack(head_a);
-	sort_the_stack(head_a, head_b);
+	index_the_stack(&head_a);
+	sort_the_stack(&head_a, &head_b);
 	free_stack(head_a);
 	free_stack(head_b);
 	return (0);

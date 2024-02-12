@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:32:17 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/08 13:48:45 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/12 14:20:00 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,28 @@
 void	check_and_push(t_stack **h_a, t_stack **h_b, int m_b, int m_bits)
 {
 	t_stack	*temp;
-	int		count;
+	int		counter;
 
 	temp = *h_b;
-	count = ft_stack_size(temp);
+	counter = ft_stack_size(temp);
 	if (m_b < m_bits - 1)
 	{
-		while (count)
+		while (counter)
 		{
 			if ((temp->index >> (m_b + 1)) & 1)
 				pa(h_a, h_b);
 			else
 				rb(h_b);
-			count--;
+			temp = *h_b;
+			counter--;
 		}
 	}
 	else
 	{
-		while (count)
+		while (ft_stack_size(temp))
 		{
 			pa(h_a, h_b);
-			count--;
+			temp = *h_b;
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 09:46:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/09 14:03:20 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/12 11:15:36 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	is_int(char **args, int counter)
 		else
 			i++;
 	}
+	nums[i] = '\0';
 	ft_free(nums);
 	return (is_valid);
 }
