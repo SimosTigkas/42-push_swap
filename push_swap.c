@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/12 14:22:52 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/13 18:29:46 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,12 @@ t_stack	*init_list(int ac, char **av)
 	int		is_valid;
 
 	counter = ac - 1;
+	node = NULL;
+	is_valid = 0;
 	if (ac == 2)
 	{
 		args = ft_split(av[1], ' ');
+		write(1, "heeereee", 8);
 		counter = num_count(av[1]);
 	}
 	else
@@ -46,11 +49,11 @@ t_stack	*init_list(int ac, char **av)
 	if (is_valid != 1)
 	{
 		ft_error("Error");
-		ft_free(args);
+		ft_free(args, counter);
 		return (NULL);
 	}
 	node = create_stack(&node, args, counter - 1);
-	ft_free(args);
+	ft_free(args, counter - 1);
 	return (node);
 }
 
@@ -71,10 +74,10 @@ int	is_sorted(t_stack **head_a)
 {
 	t_stack	*temp;
 
-	temp = head_a;
+	temp = *head_a;
 	while (temp->next)
 	{
-		if (temp->data > temp->next->data)
+		if (temp->index > temp->next->index)
 			return (0);
 		temp = temp->next;
 	}
@@ -86,24 +89,17 @@ int	main(int ac, char **av)
 	t_stack	*head_a;
 	t_stack	*head_b;
 
-	head_a = NULL;
 	head_b = NULL;
-	if (ac < 2 || (ac == 2 && av[1][0] == '\0'))
-	{
-		write(2, "Error\n", 6);
+	if (ac < 2)
 		return (0);
-	}
 	head_a = init_list(ac, av);
+	write(1, &"Here too", 8);
 	if (!(head_a))
 		return (0);
-	if (is_sorted(&head_a))
-	{
-		free_stack(head_a);
-		free_stack(head_b);
-		return (0);
-	}
 	index_the_stack(&head_a);
-	sort_the_stack(&head_a, &head_b);
+	if (is_sorted(&head_a))
+		return (0);
+	sort_the_stack(&head_a, &head_b); //here
 	free_stack(head_a);
 	free_stack(head_b);
 	return (0);

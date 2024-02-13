@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:52:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/12 12:32:26 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/13 15:28:26 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	sort_3(t_stack **head_a)
 	head = *head_a;
 	min = is_min(head_a, -1);
 	next_min = is_min(head_a, min);
-	if (is_sorted(head_a))
-		return ;
+	// if (is_sorted(head_a))
+	// 	return ;
 	if ((head->index == min) && (head->next->index != next_min))
 	{
 		rra(head_a);

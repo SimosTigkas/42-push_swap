@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:00:26 by stigkas           #+#    #+#             */
-/*   Updated: 2024/01/15 15:41:33 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:11:22 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static char	**ssplit(char const *s, char c, char **res, size_t words_count)
 	return (res);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**res;
 	size_t	words;

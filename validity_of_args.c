@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 09:46:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/12 11:15:36 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/13 14:29:48 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 int	is_int(char **args, int counter)
 {
 	int		i;
-	int		is_valid;
+	int		number;
 	char	**nums;
 	int		arg_len;
 
 	i = 0;
-	is_valid = 1;
+	number = 0;
 	nums = (char **)malloc((counter + 1) * sizeof(char **));
 	if (!nums)
-		is_valid = 0;
-	while ((i < counter) && (is_valid))
+		return (0);
+	while (i < counter)
 	{
-		nums[i] = ft_itoa(ft_atoi(args[i]));
+		number = ft_atoi(args[i]);
+		nums[i] = ft_itoa(number);
 		arg_len = ft_strlen(args[i]);
 		if (ft_strncmp(args[i], nums[i], arg_len) != 0)
 		{
-			ft_free(nums);
-			is_valid = 0;
+			ft_free(nums, i);
+			return (0);
 		}
 		else
 			i++;
 	}
-	nums[i] = '\0';
-	ft_free(nums);
-	return (is_valid);
+	ft_free(nums, i - 1);
+	return (1);
 }
 
 int	is_digit(char **args, int counter)
@@ -56,7 +56,7 @@ int	is_digit(char **args, int counter)
 		{
 			is_valid = ft_isdigit(args[i][j]);
 			if ((!is_valid) && args[i][j] != '-' \
-				&& (!ft_isdigit(args[i][j])))
+				&& (ft_isdigit(args[i][j] != 1)))
 				return (0);
 			if (j > 11)
 				return (0);
@@ -84,7 +84,7 @@ int	is_duplicated(char **args, int counter)
 			if (ft_strlen(args[i]) == ft_strlen(args[j]))
 			{
 				arg_len = ft_strlen(args[i]);
-				if (ft_strncmp(args[i], args[j], arg_len) == 0)
+				if (ft_strncmp(args[i], args[j], arg_len) == 0) //might need to be in a diff line
 					is_valid = 0;
 			}
 			j++;
@@ -92,6 +92,21 @@ int	is_duplicated(char **args, int counter)
 		i++;
 	}
 	return (is_valid);
+}
+
+int	in_asc_order(char **args, int counter)
+{
+	int	i;
+
+	i = 0;
+	while (i + 1 < counter)
+	{
+		if (ft_atoi(args[i]) < ft_atoi(args[i + 1]))
+			i++;
+		else
+			return (1);
+	}
+	return (0);
 }
 
 int	validity_of_args(char **args, int counter)
@@ -106,6 +121,9 @@ int	validity_of_args(char **args, int counter)
 	if (!is_valid)
 		return (0);
 	is_valid = is_int(args, counter);
+	if (!is_valid)
+		return (0);
+	is_valid = in_asc_order(args, counter);
 	if (!is_valid)
 		return (0);
 	return (is_valid);

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/12 14:23:42 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/13 18:16:44 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,36 +18,38 @@ void	ft_error(char *str)
 	exit(0);
 }
 
-void	ft_free(char **args)
+void	ft_free(char **args, int counter)
 {
 	int	i;
 
 	i = 0;
-	while (args[i])
+	while (i <= counter)
+	{
+		free(args[i]);
 		i++;
-	while (i > 0)
-		free(args[--i]);
+	}
 	free(args);
 }
 
-int	num_count(char *av1)
+int	num_count(char *str)
 {
 	int		nums;
 	char	c;
 
 	nums = 0;
 	c = ' ';
-	while (av1)
+	while (*str)
 	{
-		if (av1 == c)
-			av1++;
+		if (*str == c)
+			str++;
 		else
 		{
-			while ((av1 != c) && (av1))
-				av1++;
+			while ((*str != c) && (*str))
+				str++;
 			nums++;
 		}
 	}
+	write(1, "Num counted", 12);
 	return (nums);
 }
 
@@ -57,6 +59,7 @@ char	**args_array(char **av, int counter)
 	int		i;
 
 	i = 0;
+	write(1, &"well done", 9);
 	args = (char **)malloc((counter + 1) * sizeof(char **));
 	if (!args)
 		return (NULL);
@@ -65,7 +68,7 @@ char	**args_array(char **av, int counter)
 		args[i] = ft_strdup(av[1 + i]);
 		if (!args[i])
 		{
-			ft_free(args);
+			ft_free(args, i);
 			return (NULL);
 		}
 		i++;
@@ -85,9 +88,9 @@ t_stack	*create_stack(t_stack **stack, char **args, int counter)
 	new = NULL;
 	num = ft_atoi(args[i]);
 	new = ft_stacknew(num);
-	stack = new;
 	if (!new)
 		return (NULL);
+	stack = &new;
 	i++;
 	while (i <= counter)
 	{

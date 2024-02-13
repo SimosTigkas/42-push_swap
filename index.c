@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:21:20 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/12 12:22:12 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:45:09 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,16 @@ t_stack	*getthe_next_min(t_stack **stack)
 	t_stack	*min;
 	int		has_min;
 
-	min = NULL;
 	has_min = 0;
 	head = *stack;
-	if (head)
+	while (head)
 	{
-		while (head)
+		if ((head->index == -1) && ((has_min == 0) || head->data < min->data))
 		{
-			if ((head->index == -1) && ((!has_min) || head->data < min->data))
-			{
-				min = head;
-				has_min = 1;
-			}
-			head = head->next;
+			min = head;
+			has_min = 1;
 		}
+		head = head->next;
 	}
 	return (min);
 }
@@ -77,11 +73,13 @@ void	index_the_stack(t_stack **stack)
 	int		i;
 
 	i = 0;
+	write(1, "LetsGo", 7);
 	temp = *stack;
 	counter = ft_stack_size(temp);
-	while ((i < counter) && temp)
+	while (i < counter)
 	{
-		cmin = getthe_next_min(stack);
-		cmin->index = i + 1;
+		cmin = getthe_next_min(&temp);
+		cmin->index = i;
+		i++;
 	}
 }
