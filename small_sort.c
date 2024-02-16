@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:52:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/13 15:28:26 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:37:19 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sort_5(t_stack **head_a, t_stack **head_b)
 {
 	int	distance;
 
-	distance = get_distance(head_a, is_min(head_a, -1));
+	distance = get_distance(head_a, is_max(head_a, -1));
 	if (distance == 1)
 		sa(head_a);
 	else if (distance == 2)
@@ -44,7 +44,7 @@ void	sort_4(t_stack **head_a, t_stack **head_b)
 
 	if (is_sorted(head_a))
 		return ;
-	distance = get_distance(head_a, is_min(head_a, -1));
+	distance = get_distance(head_a, is_max(head_a, -1));
 	if (distance == 1)
 		ra(head_a);
 	else if (distance == 2)
@@ -64,27 +64,24 @@ void	sort_4(t_stack **head_a, t_stack **head_b)
 void	sort_3(t_stack **head_a)
 {
 	t_stack	*head;
-	int		min;
-	int		next_min;
+	int		max;
+	int		next_max;
 
 	head = *head_a;
-	min = is_min(head_a, -1);
-	next_min = is_min(head_a, min);
-	// if (is_sorted(head_a))
-	// 	return ;
-	if ((head->index == min) && (head->next->index != next_min))
+	max = is_max(head_a, -1);
+	next_max = is_max(head_a, max);
+	if (is_sorted(head_a))
+		return ;
+	if ((head->index == max) && (head->next->index != next_max))
+		ra(head_a);
+	else if ((head->index == next_max) && (head->next->index == max))
+		rra(head_a);
+	else if ((head->index == next_max) && (head->next->index != max))
+		sa(head_a);
+	else if (head->next->index == next_max)
 	{
-		rra(head_a);
+		ra(head_a);
 		sa(head_a);
-	}
-	else if ((head->index == next_min) && (head->next->index == min))
-		sa(head_a);
-	else if ((head->index == next_min) && (head->next->index != min))
-		rra(head_a);
-	else if (head->next->index == next_min)
-	{
-		sa(head_a);
-		rra(head_a);
 	}
 	else
 		ra(head_a);

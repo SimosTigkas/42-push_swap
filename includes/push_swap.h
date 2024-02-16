@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 13:42:10 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/13 18:29:28 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:53:00 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	small_sort(t_stack **head_a, t_stack **head_b);
 int		is_sorted(t_stack **head_a);
 int		is_digit(char **args, int counter);
 t_stack	*getthe_next_min(t_stack **stack);
-int		is_min(t_stack **stack, int nbr);
+int		is_max(t_stack **stack, int nbr);
 void	sort_3(t_stack **head_a);
 void	sort_4(t_stack **head_a, t_stack **head_b);
 void	sort_5(t_stack **head_a, t_stack **head_b);

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/13 18:16:44 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:56:53 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	num_count(char *str)
 			nums++;
 		}
 	}
-	write(1, "Num counted", 12);
 	return (nums);
 }
 
@@ -59,7 +58,6 @@ char	**args_array(char **av, int counter)
 	int		i;
 
 	i = 0;
-	write(1, &"well done", 9);
 	args = (char **)malloc((counter + 1) * sizeof(char **));
 	if (!args)
 		return (NULL);

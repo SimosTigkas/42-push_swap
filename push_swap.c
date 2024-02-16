@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/13 18:29:46 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 09:17:20 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ t_stack	*init_list(int ac, char **av)
 	int		is_valid;
 
 	counter = ac - 1;
-	node = NULL;
-	is_valid = 0;
-	if (ac == 2)
+	if (counter == 1)
 	{
 		args = ft_split(av[1], ' ');
-		write(1, "heeereee", 8);
 		counter = num_count(av[1]);
 	}
 	else
@@ -84,22 +81,24 @@ int	is_sorted(t_stack **head_a)
 	return (1);
 }
 
+#include <stdio.h>
+
 int	main(int ac, char **av)
 {
 	t_stack	*head_a;
 	t_stack	*head_b;
+	int		i;
 
 	head_b = NULL;
 	if (ac < 2)
 		return (0);
 	head_a = init_list(ac, av);
-	write(1, &"Here too", 8);
 	if (!(head_a))
 		return (0);
 	index_the_stack(&head_a);
 	if (is_sorted(&head_a))
 		return (0);
-	sort_the_stack(&head_a, &head_b); //here
+	sort_the_stack(&head_a, &head_b);
 	free_stack(head_a);
 	free_stack(head_b);
 	return (0);

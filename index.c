@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:21:20 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/13 17:45:09 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:55:46 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ int	get_distance(t_stack **head_a, int index)
 	return (distance);
 }
 
-int	is_min(t_stack **stack, int nbr)
+int	is_max(t_stack **stack, int nbr)
 {
 	t_stack	*head;
-	int		min;
+	int		max;
 
 	head = *stack;
-	min = head->index;
+	max = head->index;
 	while (head->next)
 	{
 		head = head->next;
-		if ((head->index < min) && (head->index != nbr))
-			min = head->index;
+		if ((head->index > max) && (head->index != nbr))
+			max = head->index;
 	}
-	return (min);
+	return (max);
 }
 
 t_stack	*getthe_next_min(t_stack **stack)
@@ -73,7 +73,6 @@ void	index_the_stack(t_stack **stack)
 	int		i;
 
 	i = 0;
-	write(1, "LetsGo", 7);
 	temp = *stack;
 	counter = ft_stack_size(temp);
 	while (i < counter)

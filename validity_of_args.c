@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 09:46:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/13 14:29:48 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 08:57:06 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	is_duplicated(char **args, int counter)
 			if (ft_strlen(args[i]) == ft_strlen(args[j]))
 			{
 				arg_len = ft_strlen(args[i]);
-				if (ft_strncmp(args[i], args[j], arg_len) == 0) //might need to be in a diff line
+				if (ft_strncmp(args[i], args[j], arg_len) == 0)
 					is_valid = 0;
 			}
 			j++;
