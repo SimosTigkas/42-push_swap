@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:52:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/16 08:37:19 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 10:36:21 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sort_5(t_stack **head_a, t_stack **head_b)
 	pb(head_a, head_b);
 	sort_4(head_a, head_b);
 	pa(head_a, head_b);
+	ra(head_a);
 }
 
 void	sort_4(t_stack **head_a, t_stack **head_b)
@@ -59,6 +60,7 @@ void	sort_4(t_stack **head_a, t_stack **head_b)
 	pb(head_a, head_b);
 	sort_3(head_a);
 	pa(head_a, head_b);
+	ra(head_a);
 }
 
 void	sort_3(t_stack **head_a)
@@ -84,7 +86,10 @@ void	sort_3(t_stack **head_a)
 		sa(head_a);
 	}
 	else
-		ra(head_a);
+	{
+		rra(head_a);
+		sa(head_a);
+	}
 }
 
 void	small_sort(t_stack **head_a, t_stack **head_b)

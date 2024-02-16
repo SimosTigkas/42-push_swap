@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/16 09:17:20 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 09:50:40 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,10 @@ int	is_sorted(t_stack **head_a)
 	return (1);
 }
 
-#include <stdio.h>
-
 int	main(int ac, char **av)
 {
 	t_stack	*head_a;
 	t_stack	*head_b;
-	int		i;
 
 	head_b = NULL;
 	if (ac < 2)
