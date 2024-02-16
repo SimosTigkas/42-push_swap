@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 09:32:17 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/12 14:20:00 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 15:15:56 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	check_and_push(t_stack **h_a, t_stack **h_b, int m_b, int m_bits)
 	counter = ft_stack_size(temp);
 	if (m_b < m_bits - 1)
 	{
-		while (counter)
+		while (counter > 0)
 		{
-			if ((temp->index >> (m_b + 1)) & 1)
+			if (((temp->index >> (m_b + 1)) & 1) == 1)
 				pa(h_a, h_b);
 			else
 				rb(h_b);
@@ -33,7 +33,7 @@ void	check_and_push(t_stack **h_a, t_stack **h_b, int m_b, int m_bits)
 	}
 	else
 	{
-		while (ft_stack_size(temp))
+		while (ft_stack_size(temp) != 0)
 		{
 			pa(h_a, h_b);
 			temp = *h_b;
@@ -49,15 +49,15 @@ void	div_by_bits(t_stack **h_a, t_stack **h_b, int m_bits, int m_index)
 
 	temp = *h_a;
 	m_i = 0;
-	m_b = 0;
-	while (m_b < m_bits)
+	m_b = -1;
+	while (m_b + 1 < m_bits)
 	{
 		temp = *h_a;
 		m_index = ft_stack_size(temp);
 		while ((m_index) && (!is_sorted(h_a)))
 		{
 			m_i = temp->index;
-			if ((m_i >> m_b) & 1)
+			if ((m_i >> (m_b + 1)) & 1)
 				ra(h_a);
 			else
 				pb(h_a, h_b);

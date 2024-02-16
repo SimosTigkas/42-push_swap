@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:52:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/16 10:36:21 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/16 14:43:27 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,10 @@ void	sort_4(t_stack **head_a, t_stack **head_b)
 	else if (distance == 2)
 	{
 		ra(head_a);
-		sa(head_a);
+		ra(head_a);
 	}
 	else if (distance == 3)
 		rra(head_a);
-	if (is_sorted(head_a))
-		return ;
 	pb(head_a, head_b);
 	sort_3(head_a);
 	pa(head_a, head_b);
@@ -66,29 +64,29 @@ void	sort_4(t_stack **head_a, t_stack **head_b)
 void	sort_3(t_stack **head_a)
 {
 	t_stack	*head;
-	int		max;
-	int		next_max;
 
 	head = *head_a;
-	max = is_max(head_a, -1);
-	next_max = is_max(head_a, max);
-	if (is_sorted(head_a))
-		return ;
-	if ((head->index == max) && (head->next->index != next_max))
-		ra(head_a);
-	else if ((head->index == next_max) && (head->next->index == max))
-		rra(head_a);
-	else if ((head->index == next_max) && (head->next->index != max))
-		sa(head_a);
-	else if (head->next->index == next_max)
+	if ((head->index == 0) && (head->next->index == 2))
 	{
 		ra(head_a);
 		sa(head_a);
 	}
+	else if (head->index == 1)
+	{
+		if (head->next->index == 0)
+			sa(head_a);
+		else
+			rra(head_a);
+	}
 	else
 	{
-		rra(head_a);
-		sa(head_a);
+		if (head->next->index == 0)
+			ra(head_a);
+		else
+		{
+			ra(head_a);
+			sa(head_a);
+		}
 	}
 }
 
