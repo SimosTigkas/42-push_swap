@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 09:46:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/16 11:04:47 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/19 15:32:48 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,21 +94,6 @@ int	is_duplicated(char **args, int counter)
 	return (is_valid);
 }
 
-// int	in_asc_order(char **args, int counter)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i + 1 < counter)
-// 	{
-// 		if (ft_atoi(args[i]) < ft_atoi(args[i + 1]))
-// 			i++;
-// 		else
-// 			return (1);
-// 	}
-// 	return (0);
-// }
-
 int	validity_of_args(char **args, int counter)
 {
 	int		is_valid;
@@ -123,8 +108,5 @@ int	validity_of_args(char **args, int counter)
 	is_valid = is_int(args, counter);
 	if (!is_valid)
 		return (0);
-	// is_valid = in_asc_order(args, counter);
-	// if (!is_valid)
-	// 	return (0);
 	return (is_valid);
 }

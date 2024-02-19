@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:14:18 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/16 08:56:53 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/19 14:58:38 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	**args_array(char **av, int counter)
 		if (!args[i])
 		{
 			ft_free(args, i);
+			free(args);
 			return (NULL);
 		}
 		i++;
