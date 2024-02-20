@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:00:26 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/13 17:11:22 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/20 13:57:37 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ static size_t	get_word_len(char const *s, char c)
 
 static void	free_array(size_t i, char **res)
 {
-	while (i > 0)
+	while (i >= 0)
 	{
-		i--;
 		free(*(res + i));
+		i--;
 	}
 	free(res);
 }

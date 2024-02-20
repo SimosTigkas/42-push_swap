@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:40:31 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/19 15:10:58 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/20 13:42:06 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	main(int ac, char **av)
 	t_stack	*head_a;
 	t_stack	*head_b;
 
+	head_a = NULL;
 	head_b = NULL;
 	if (ac < 2)
 		return (0);
@@ -94,7 +95,11 @@ int	main(int ac, char **av)
 		return (0);
 	index_the_stack(&head_a);
 	if (is_sorted(&head_a))
+	{
+		free_stack(head_a);
+		free_stack(head_b);
 		return (0);
+	}
 	sort_the_stack(&head_a, &head_b);
 	free_stack(head_a);
 	free_stack(head_b);
