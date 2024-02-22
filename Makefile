@@ -1,6 +1,6 @@
-NAME=push_swap.a
+NAME = push_swap
 
-FUNC= \
+FUNC = \
 	index.c \
 	push_swap.c \
 	push.c \
@@ -15,27 +15,33 @@ FUNC= \
 
 INC = includes
 
+LIBFT = libfta/libft.a
+
+PSNAME = push_swap
+
 OBJ = $(FUNC:.c=.o)
 
 CC = gcc
-
 CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar crs $(NAME) $(OBJ)
-	cd libfta && $(MAKE) all && $(MAKE) bonus
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) -I $(INC) $(OBJ) $(LIBFT) -o $(PSNAME)
+	chmod +x $(PSNAME)
 
 $(OBJ): %.o: %.c
-	$(CC) $(CFLAGS) -c $? -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT):
+	cd libfta && $(MAKE)
 
 clean:
 	rm -f $(OBJ)
 	cd libfta && $(MAKE) clean
 
-fclean:	clean
-	rm -f $(NAME) 
+fclean: clean
+	rm -f $(PSNAME)
 	cd libfta && $(MAKE) fclean
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: stigkas <stigkas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:52:25 by stigkas           #+#    #+#             */
-/*   Updated: 2024/02/19 14:05:16 by stigkas          ###   ########.fr       */
+/*   Updated: 2024/02/22 12:48:36 by stigkas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	sort_5(t_stack **head_a, t_stack **head_b)
 
 	distance = get_distance(head_a, is_max(head_a, -1));
 	if (distance == 1)
-		ra(head_a); //it was sa
+		ra(head_a);
 	else if (distance == 2)
 	{
 		ra(head_a);
-		ra(head_a); //it was sa
+		ra(head_a);
 	}
 	else if (distance == 3)
 	{
